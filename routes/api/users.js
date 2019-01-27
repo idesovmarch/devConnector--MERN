@@ -59,6 +59,15 @@ routher.post("/login", (req, res) => {
     if (!user) {
       return res.status(404).json({ email: "Uer not found" });
     }
+
+    //Check Pasword
+    bcrypt.compare(password, user.password).then(isMatch => {
+      if (isMatch) {
+        res.json({ msg: "success" });
+      } else {
+        return res.status(400).json({ password: "Password incorrect" });
+      }
+    });
   });
 });
 
