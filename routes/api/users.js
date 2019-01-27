@@ -46,4 +46,20 @@ router.post("/register", (req, res) => {
   });
 });
 
+//@route Get api/users/login
+//@desc Login user / Returning JWT Token
+//@access Public
+routher.post("/login", (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  //Find user by email
+  User.findOne({ email }).then(user => {
+    //Check for user
+    if (!user) {
+      return res.status(404).json({ email: "Uer not found" });
+    }
+  });
+});
+
 module.exports = router;
