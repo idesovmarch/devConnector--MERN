@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 
 //Load Validation
-const ValidateProfileInput = require("../../validation/profile");
+const validateProfileInput = require("../../validation/profile");
+const validateExperienceInput = require("../../validation/experience");
 
 //Load Profile Model
 const Profile = require("../../models/Profile");
@@ -98,7 +99,7 @@ router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    const { errors, isValid } = ValidateProfileInput(req.body);
+    const { errors, isValid } = validateProfileInput(req.body);
 
     //Check Validation
     if (!isValid) {
@@ -153,6 +154,33 @@ router.post(
           new Profile(profileFields).save().then(profile => res.json(profile));
         });
       }
+    });
+  }
+);
+
+//@route POST api/profile/experience
+//@desc Add experience to profile
+//@access Private
+
+router.post(
+  "/experience",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const { errors, isValid } = validateExperienceInput(req.body);
+
+    profile.findOne({ user: req.user.id }).then(profile => {
+      const newExp = {
+        title: req.body.title,
+        company: req.body.company,
+        location: req.body.location,
+        from: req.body.from,
+        to: req.body.to,
+        current: req.body.current,
+        description: req.body.description
+      };
+      //Add to exp array
+      profile.experience.unshift(newExp);
+      profile.save().then(profile => res.json(profile));
     });
   }
 );
