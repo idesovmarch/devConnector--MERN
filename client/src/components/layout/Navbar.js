@@ -7,7 +7,7 @@ class Navbar extends Component {
       <nav className='navbar navbar-expand-sm navbar-light bg-light mb-4'>
         <div className='container'>
           <Link className='navbar-brand' to='/'>
-            DevConnector
+            <b>Dev/Connect</b>
           </Link>
           <button
             className='navbar-toggler'
