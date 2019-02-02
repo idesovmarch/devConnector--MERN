@@ -28,7 +28,7 @@ class Landing extends Component {
                 <hr />
                 <Link to='/register' className='btn btn-lg btn-info mr-2'>
                   Sign Up {''}
-                  <i class='fas fa-user-plus justify-content-end' />
+                  <i class='fas fa-user-plus' />
                 </Link>
                 <Link to='/login' className='btn btn-lg btn-light'>
                   Login {''}
