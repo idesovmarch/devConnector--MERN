@@ -65,26 +65,26 @@ class Login extends Component {
                   onChange={this.onChange}
                   error={errors.email}
                 />
-                <form onSubmit={this.onSubmit}>
-                  <TextFieldGroup
-                    placeholder='password'
-                    name='password'
-                    type='password'
-                    value={this.state.password}
-                    onChange={this.onChange}
-                    error={errors.password}
-                  />
-                  <input
-                    type='submit'
-                    className='btn btn-info btn-block mt-4'
-                    style={{
-                      width: '25%',
-                      marginLeft: 'auto',
-                      marginRight: 'auto'
-                    }}
-                  />
-                </form>
               </form>
+              <form onSubmit={this.onSubmit}>
+                <TextFieldGroup
+                  placeholder='password'
+                  name='password'
+                  type='password'
+                  value={this.state.password}
+                  onChange={this.onChange}
+                  error={errors.password}
+                />
+              </form>
+              <input
+                type='submit'
+                className='btn btn-info btn-block mt-4'
+                style={{
+                  width: '25%',
+                  marginLeft: 'auto',
+                  marginRight: 'auto'
+                }}
+              />
             </div>
           </div>
         </div>
