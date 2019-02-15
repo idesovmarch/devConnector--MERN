@@ -80,7 +80,7 @@ class Login extends Component {
                 type='submit'
                 className='btn btn-info btn-block mt-4'
                 style={{
-                  width: '25%',
+                  width: '30%',
                   marginLeft: 'auto',
                   marginRight: 'auto'
                 }}
