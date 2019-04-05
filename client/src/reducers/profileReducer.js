@@ -29,7 +29,7 @@ export default function (state = initialState, action) {
         ...state,
         profiles: action.payload,
         loading: false
-      }
+      };
     case CLEAR_CURRENT_PROFILE:
       return {
         ...state,

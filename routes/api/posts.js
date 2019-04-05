@@ -12,14 +12,14 @@ const Profile = require("../../models/Profile");
 //Validation
 const validatePostInput = require("../../validation/post");
 
-//Get api/posts/test
-//Tests post route
-//Public
+//@route Get api/posts/test
+//@desc Tests post route
+//@access Public
 router.get("/test", (req, res) => res.json({ msg: "Posts Works" }));
 
-//GET api/posts
-//Get posts
-//Public
+//@route GET api/posts
+//@desc Get posts
+//@access Public
 router.get("/", (req, res) => {
   Post.find()
     .sort({ date: -1 })
@@ -27,9 +27,9 @@ router.get("/", (req, res) => {
     .catch(err => res.status(404).json({ nopostfound: "No posts found" }));
 });
 
-//GET api/posts/:id
-//Get posts
-//Public
+//@route GET api/posts/:id
+//@desc Get posts
+//@access Public
 router.get("/:id", (req, res) => {
   Post.findById(req.params.id)
     .then(post => res.json(post))
@@ -38,9 +38,9 @@ router.get("/:id", (req, res) => {
     );
 });
 
-//POST api/posts
-//Create post
-//Private
+//@route POST api/posts
+//@desc Create post
+//@access Private
 router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
@@ -56,7 +56,7 @@ router.post(
     const newPost = new Post({
       text: req.body.text,
       name: req.body.name,
-      avatar: req.body.name,
+      avatar: req.body.avatar,
       user: req.user.id
     });
 
@@ -64,9 +64,9 @@ router.post(
   }
 );
 
-//DELETE api/posts/:id
-//Delete post
-//Private
+//@route DELETE api/posts/:id
+//@desc Delete post
+//@access Private
 router.delete(
   "/:id",
   passport.authenticate("jwt", { session: false }),
@@ -89,9 +89,9 @@ router.delete(
   }
 );
 
-//POST api/posts/like/:id
-//Like post
-//Private
+//@route POST api/posts/like/:id
+//@desc Like post
+//@access Private
 router.post(
   "/like/:id",
   passport.authenticate("jwt", { session: false }),
@@ -117,9 +117,9 @@ router.post(
   }
 );
 
-//POST api/posts/unlike/:id
-//unlike post
-//Private
+//@route POST api/posts/unlike/:id
+//@desc Like post
+//@access Private
 router.post(
   "/unlike/:id",
   passport.authenticate("jwt", { session: false }),
@@ -150,9 +150,9 @@ router.post(
   }
 );
 
-//POST api/posts/comment/:id
-//Add comment to post
-//Private
+//@route POST api/posts/comment/:id
+//@desc Add comment to post
+//@access Private
 router.post(
   "/comment/:id",
   passport.authenticate("jwt", { session: false }),
@@ -183,9 +183,9 @@ router.post(
   }
 );
 
-//DELETE api/posts/comment/:id/:comment_id
-//Delete comment from post
-//Private
+//@route DELETE api/posts/comment/:id/:comment_id
+//@desc Delete comment from post
+//@access Private
 router.delete(
   "/comment/:id/:comment_id",
   passport.authenticate("jwt", { session: false }),

@@ -12,6 +12,7 @@ class CreateProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      displaySocialInputs: false,
       handle: '',
       company: '',
       website: '',
@@ -23,7 +24,6 @@ class CreateProfile extends Component {
       twitter: '',
       facebook: '',
       linkedin: '',
-      youtuble: '',
       youtube: '',
       instagram: '',
       errors: {}
@@ -207,11 +207,11 @@ class CreateProfile extends Component {
                 <div className='mb-3'>
                   <button
                     type='button'
-                    onClick={() =>
+                    onClick={() => {
                       this.setState(prevState => ({
                         displaySocialInputs: !prevState.displaySocialInputs
-                      }))
-                    }
+                      }));
+                    }}
                     className='btn btn-light'>
                     Add Social Network Links
                   </button>
